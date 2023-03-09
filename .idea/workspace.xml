@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e581af55-ec16-4fdb-8fd1-bd24654135de" name="Changes" comment="added python server (not finished)" />
+    <list default="true" id="e581af55-ec16-4fdb-8fd1-bd24654135de" name="Changes" comment="changed folders" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,6 +88,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added python server (not finished)" />
-    <option name="LAST_COMMIT_MESSAGE" value="added python server (not finished)" />
+    <MESSAGE value="changed folders" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed folders" />
   </component>
 </project>
