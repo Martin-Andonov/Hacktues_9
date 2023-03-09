@@ -21,30 +21,39 @@ function chek_for_existance(ip)
 
 function remove_client(ip)
 {
+  console.log(connections);
+
   for(let i = 0; i < connections.length; i++)
   {
     if(connections[i].addres = ip)
     {
-      //remove 
+//TODO: ne bachka opravi go 
+      connections.slice(i, 1); // 2nd parameter means remove one item only
+      
     }
   }
+
+  console.log(connections);
 }
 
 
 wss.on('connection', function connection(ws) {
   console.log('Client connected');
 
+
+
   if(chek_for_existance(ws._socket.remoteAddress))
   {
     
+
   }else
   {
-  ws.on('message', function incoming(message) {
-
     conection.addres = ws._socket.remoteAddress;
     conection.time = Date.now()
-
+  
     connections.push(conection);
+  ws.on('message', function incoming(message) {
+
     console.log(`Address: ${connections[0].addres} Date: ${connections[0].time}`);
     console.log('Received: %s', message);
     ws.send('Server says: ' + message);
@@ -53,6 +62,7 @@ wss.on('connection', function connection(ws) {
   ws.on('close', function close() {
 
     console.log('Client disconnected');
+    remove_client(ws._socket.remoteAddress);
   });
 
   }
@@ -63,7 +73,7 @@ function check_for_time()
 {
   for(let i = 0; i< 1000; i++)
   {
-    console.log("i love men!");
+    //console.log("i love men!");
   }
   
 }
