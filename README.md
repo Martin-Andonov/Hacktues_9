@@ -1,4 +1,23 @@
-# TEAM EXOTIC WHIP
-Repo за Hacktues 9
+# ResQMe
 
-x73 x61 x73 x68 x6f x20 x65 x20 x6e x61 x69 x20 x6e x65 x6b x6f x6d x70 x65 x74 x65 x6e x74 x6e x69 x71 x20 x73 x75 x6f x64 x62 x6f x72 x6e x69 x6b x20 x65 x76 x65 x72
+*Team Exotic whip (https://hacktues.com/teams/86).*
+
+Сайт, в който в случай на бедствие ще следи локацията ти и ще се качва на карта, която всеки човек, който иска да помогне ще може да види.
+
+## Technology
+
+- HTML
+- CSS
+- JS
+- PYTHON SOCKET
+- MySQL
+
+## Authors
+
+- [@SashoJoto](https://github.com/SashoJoto)
+- [@valentin](https://github.com/alt-plus-f4)
+- [@nickolay-ivanov](https://github.com/nickolay-ivanov)
+- [@mrGoblings](https://github.com/mrGoblings)
+- [@martin-andonov](https://github.com/Martin-Andonov)
+
+© Copyright 2022. 
