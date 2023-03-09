@@ -1,6 +1,6 @@
 const WebSocket = require('ws');
 
-const wss = new WebSocket.Server({ port: 9999 });
+const wss = new WebSocket.Server({ port: 8080 });
 
 wss.on('connection', function connection(ws) {
   console.log('Client connected');
@@ -14,5 +14,3 @@ wss.on('connection', function connection(ws) {
     console.log('Client disconnected');
   });
 });
-
-ws.send("server");
