@@ -1,7 +1,6 @@
 import socket
 import os
 import subprocess
-import datetime
 
 s = socket.socket()
 host = '127.0.0.1'

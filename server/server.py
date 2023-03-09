@@ -1,43 +1,128 @@
 import socket
+import sys
 import threading
+import time
+from queue import Queue
 
-def multi_threaded_client(connection):
-    connection.send(str.encode('Server is working:'))
-    while True:
-        data = connection.recv(2048)
-        response = 'Server message: ' + data.decode('utf-8')
-        if not data:
-            break
-        connection.sendall(str.encode(response))
-    connection.close()
+NUMBER_OF_THREADS = 5
+JOB_NUMBER = [1]
+queue = Queue()
+all_connections = []
+all_address = []
 
-def launchServer():
 
-    TCP_IP = '127.0.0.1'
-    TCP_PORT = 7005
-    ThreadCount = 0
-
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+# Create a Socket ( connect two computers)
+def create_socket():
 
     try:
-        s.bind((TCP_IP, TCP_PORT))
-    except socket.error as e:
-        print(str(e))
+        global host
+        global port
+        global s
+        host = "127.0.0.1"
+        port = 9999
+        s = socket.socket()
 
-    s.listen(1)
+    except socket.error as msg:
+        print("Socket creation error: " + str(msg))
+
+
+# Binding the socket and listening for connections
+def bind_socket():
+    try:
+        global host
+        global port
+        global s
+        print("Binding the Port: " + str(port))
+
+        s.bind((host, port))
+        s.listen(5)
+
+    except socket.error as msg:
+        print("Socket Binding error" + str(msg) + "\n" + "Retrying...")
+        bind_socket()
+
+
+# Handling connection from multiple clients and saving to a list
+# Closing previous connections when server.py file is restarted
+def accepting_connections():
+    for c in all_connections:
+        c.close()
+
+    del all_connections[:]
+    del all_address[:]
 
     while True:
-        Client, address = s.accept()
-        print('Connected to: ' + address[0] + ':' + str(address[1]))
-        #start_new_thread(multi_threaded_client, (Client,))
-        ThreadCount += 1
-        print('Thread Number: ' + str(ThreadCount))
-    ServerSideSocket.close()
+        try:
+            conn, address = s.accept()
+            s.setblocking(1)  # prevents timeout
+
+            all_connections.append(conn)
+            all_address.append(address)
 
 
-if __name__ == "__main__":
+            print("Connection has been established :" + address[0])
+            list_connections()
 
-    t = threading.Thread(target=(launchServer()))
-    t.daemon = True
-    t.start()
+
+        except:
+            print("Error accepting connections")
+
+
+# 2nd thread functions - 1) See all the clients 2) Select a client 3) Send commands to the connected client
+# Interactive prompt for sending commands
+# turtle> list
+# 0 Friend-A Port
+# 1 Friend-B Port
+# 2 Friend-C Port
+# turtle> select 1
+# 192.168.0.112> dir
+
+# Display all current active connections with client
+
+def list_connections():
+    results = ''
+
+    for i, conn in enumerate(all_connections):
+        try:
+            conn.send(str.encode(' '))
+            conn.recv(20480)
+        except:
+            del all_connections[i]
+            del all_address[i]
+            continue
+
+        results += str(i) + "   " + str(all_address[i][0]) + "   " + str(all_address[i][1]) + "\n"
+
+    print("----Clients----" + "\n" + results)
+
+# Create worker threads
+def create_workers():
+    for _ in range(NUMBER_OF_THREADS):
+        t = threading.Thread(target=work)
+        t.daemon = True
+        t.start()
+
+
+
+# Do next job that is in the queue (handle connections, send commands)
+def work():
+    while True:
+        x = queue.get()
+        if x == 1:
+            create_socket()
+            bind_socket()
+            accepting_connections()
+
+        queue.task_done()
+
+
+
+def create_jobs():
+    for x in JOB_NUMBER:
+        queue.put(x)
+
+    queue.join()
+
+
+create_workers()
+create_jobs()
