@@ -27,9 +27,8 @@ function remove_client(ip)
   {
     if(connections[i].addres = ip)
     {
-//TODO: ne bachka opravi go 
-      connections.slice(i, 1); // 2nd parameter means remove one item only
-      
+       //TODO: ne bachka opravi go 
+       connections.splice(i, 1); //tova moje i da bachka 
     }
   }
 
