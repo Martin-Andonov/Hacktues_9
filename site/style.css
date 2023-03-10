@@ -20,7 +20,7 @@
     align-content: center;
     text-align: center;
     margin: auto;
-    padding: 0;
+    padding: 20px;
     min-height: 90vh;
 }
 
@@ -35,7 +35,6 @@
     background-color: white;
     border-radius: 10px;
     padding: 10px;
-    background-color: ;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -72,8 +71,7 @@ input {
 }
 
 input[type="text"] {
-    background: #fff;
-    width: 340px;
+    width: 420px;
     height: 50px;
     border: none;
     outline: none;
@@ -92,11 +90,6 @@ input[type="submit"] {
     cursor: pointer;
     background: #ffc107;
     color: white;
-}
-
-#close:hover {
-    transition: 0.2s;
-    text-decoration: black;
 }
 
 input[type="submit"]:hover {
@@ -118,8 +111,20 @@ input[type="submit"]:hover {
     min-height: 10vh;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
+    .box {
+        width: 360px;
+    }
+    input[type="submit"] {
+        height: 50px;
+        width: 75px;
+    }
 
+    input[type="text"] {
+        width: 250px;
+        height: 50px;
+
+    }
 }
 /*
 #help-btn {
