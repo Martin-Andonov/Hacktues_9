@@ -21,7 +21,7 @@ function data_brakedown(cords_data)
   for(let i = 0; i < cords_data.length; i++)
   {
     //console.log("x:" + cords_data[i].lat + " y:" + cords_data[i].long);
-    addMarker(cords_data[i].lat ,cords_data[i].long,"");
+    addMarker(cords_data[i].lat ,cords_data[i].long,"")
   }
 }
 

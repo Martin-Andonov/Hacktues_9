@@ -183,7 +183,7 @@ htp_resp.on('connection',async function connection(ws)
   }
 
   //trqbva da go vurna na drugiq kod
-  ws.send(output_arr);
+  ws.send(JSON.stringify(output_arr));
 
 });
 
