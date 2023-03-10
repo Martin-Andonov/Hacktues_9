@@ -40,7 +40,7 @@ const intervalId = setInterval(() => {
   if (!isConected) {
     connect(); // call the connect function again
   }
-}, 1000); // repeat every second
+}, 5000); // repeat every 5 seconds
 
 window.onbeforeunload = function () {
 	ws.close();
