@@ -15,9 +15,6 @@ document.getElementById("button").addEventListener("click", function() {
   }
 });
 
-  
-
-
 function connect() {
   ws = new WebSocket(`ws://${LOCATION}`);
     console.log("Trying to connect..");

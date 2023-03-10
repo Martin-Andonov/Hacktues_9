@@ -27,8 +27,8 @@ class Database {
     });
   }
 
-  addClient(lang, lat, date){
-    var sql = `INSERT INTO \`resqme\`(\`latitude\`, \`longitute\`, \`id\`, \`date\`) VALUES ('${lang}','${lat}', NULL, '${date}')`;
+  addClient(lang, lat, date, message){
+    var sql = `INSERT INTO \`resqme\`(\`latitude\`, \`longitute\`, \`id\`, \`date\`, \`message\`) VALUES ('${lang}','${lat}', NULL, '${date}', '${message}')`;
     console.log("SQL", sql);
     
     this.connection.query(sql, function (err) {
