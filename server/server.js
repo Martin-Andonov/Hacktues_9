@@ -82,7 +82,6 @@ class Database {
 
       calbackresolve (result);
     });
-    
     return cordspromise;
   }
 }
@@ -174,15 +173,15 @@ htp_resp.on('connection',async function connection(ws)
   db_answer = await db.getAllCoords();
   let cords_obj = {};
   let output_arr = [];
-
+  
   for(let i = 0; i < db_answer.length; i++)
   {
     cords_obj.lat = db_answer[i].latitude;
     cords_obj.long = db_answer[i].longitute;
-    output_arr.push(cords_obj);
+    output_arr.push([cords_obj.lat,cords_obj.long]);
   }
-
-  //trqbva da go vurna na drugiq kod
+  
+  //console.log(output_arr);
   ws.send(JSON.stringify(output_arr));
 
 });
