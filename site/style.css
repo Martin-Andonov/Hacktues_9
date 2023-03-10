@@ -1,8 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 #map {
     bottom: 0;
     min-height: 90vh;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    position: relative;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    margin: auto;
+    padding: 0;
+    min-height: 90vh;
+}
+
+.container#blur.active {
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+}
+
+#popup {
+    position: fixed;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: ;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+    visibility: hidden;
+    opacity: 0;
+    transition: .4s;
+}
+
+#popup.active {
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: .4s;
+}
+
+
+.box {
+/*    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);*/
+    opacity: 0;
+    display: none;
+    position: absolute;
+}
+
+input {
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    box-sizing: border-box;
+    transition: .4s;
+}
+
+input[type="text"] {
+    background: #fff;
+    width: 340px;
+    height: 50px;
+    border: none;
+    outline: none;
+    padding: 0 25px;
+    border-radius: 25px 0 0 25px;
+}
+
+input[type="submit"] {
+    position: relative;
+    left: -5px;
+    border-radius: 0 25px 25px 0;
+    height: 50px;
+    width: 150px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #ffc107;
+    color: white;
+}
+
+#close:hover {
+    transition: 0.2s;
+    text-decoration: black;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff5722;
+}
+
+#help-btn {
+    width: 500px;
+    height: 150px;
+    font-size: 50px;
+    margin: 20px;
+    border-radius: 10px;
+    border-color: red;
+    background-color: red;
+    color: white;
 }
 
 .navbar {
     min-height: 10vh;
 }
+
+@media only screen and (max-width: 600px) {
+
+}
+/*
+#help-btn {
+    width: 150px;
+    height: 75px;
+    z-index: 1000;
+    float: bottom;
+    position: relative;
+    color: white;
+    background-color: red;
+    font-size: 25px;
+    border-radius: 5px;
+    padding: 5px;
+}*/
