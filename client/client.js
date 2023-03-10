@@ -5,7 +5,7 @@ document.getElementById("button").addEventListener("click", function() {
   console.log("Button clicked, isActive = " + isActive);
 });
 
-const LOCATION = "10.1.79.139:9999";
+const LOCATION = "10.1.79.77:9999";
 const ws = new WebSocket(`ws://${LOCATION}`);
 
 ws.addEventListener('open', (event) => {
