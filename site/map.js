@@ -22,7 +22,7 @@ function data_brakedown(cords_data)
   {
     //console.log("x:" + cords_data[i].lat + " y:" + cords_data[i].long);
     
-    addMarker(cords_data[i][0],cords_data[i][1]," ");
+    addMarker(cords_data[i][0],cords_data[i][1],cords_data[i][2]);
   }
 }
 

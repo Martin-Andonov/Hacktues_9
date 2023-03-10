@@ -74,7 +74,7 @@ class Database {
               calbackreject = reject;
     }
     let cordspromise = new Promise(cordscalback);
-    const query = `SELECT latitude, longitute FROM resqme`;
+    const query = `SELECT latitude, longitute, message FROM resqme`;
 
     this.connection.query(query, (err, result) => {
       
@@ -178,9 +178,10 @@ htp_resp.on('connection',async function connection(ws)
   {
     cords_obj.lat = db_answer[i].latitude;
     cords_obj.long = db_answer[i].longitute;
-    output_arr.push([cords_obj.lat,cords_obj.long]);
+    cords_obj.message = db_answer[i].message;
+    output_arr.push([cords_obj.lat,cords_obj.long,cords_obj.message]);
   }
-  
+
   //console.log(output_arr);
   ws.send(JSON.stringify(output_arr));
 
