@@ -25,10 +25,6 @@ To use ResQMe, follow these steps:
 
 Note: ResQMe is an anonymous web-based application, and no login is required. Simply connect to the ResQMe website or PWA app to start using our app immediately.
 
-## Conclusion
-
-ResQMe is a reliable tool for disaster response, enabling us to quickly locate and assist those in need during a crisis. We leverage cutting-edge technologies and best practices to provide efficient and dependable service to our users. Thank you for selecting ResQMe for your disaster response needs.
-
 ## Authors
 
 - [@SashoJoto](https://github.com/SashoJoto)
@@ -37,4 +33,4 @@ ResQMe is a reliable tool for disaster response, enabling us to quickly locate a
 - [@mrGoblings](https://github.com/mrGoblings)
 - [@martin-andonov](https://github.com/Martin-Andonov)
 
-© Copyright 2022. 
+© Copyright 2023. 
