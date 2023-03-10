@@ -16,6 +16,8 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
             integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
             crossorigin=""></script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
@@ -62,12 +64,14 @@
     </button>
 </div>
 <div class="box" id="popup">
-    <h1 class="text-black" style="color: black">Can you tell us what's happening?</h1>
+    <span class="material-symbols-outlined" style="position: absolute; top: 0; right: 0; margin: 5px; cursor: pointer" onclick="toggle()">
+    close
+    </span>
+    <h1 class="text-black" style="color: black; margin-top: 5px; margin-right: 5px">Can you tell us what's happening?</h1>
     <form action="map.html">
         <input class="bg-light" type="text" name="" maxlength="128" id="textbox" placeholder="Type a message or leave it empty...">
         <input type="submit" name="" value="Send">
     </form>
-    <a href="#" id="close" onclick="toggle()" style="margin: 50px 0 20px 0; text-decoration: none; color: black">Close</a>
 </div>
 <!--<div id="map"></div>-->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
