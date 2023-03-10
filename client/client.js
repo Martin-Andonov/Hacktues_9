@@ -1,5 +1,5 @@
-const LOCATION = "10.1.79.139:9999";
-// const LOCATION = "192.168.0.7";
+// const LOCATION = "10.1.79.139:9999";
+const LOCATION = "192.168.0.104:9999";
 let ws;
 var isConected = false; //* if there is an error it will be set to false
 var isActive = false;
@@ -28,7 +28,6 @@ function connect() {
   };
   ws.addEventListener('open', (event) => {
 	isConected = true;
-	ws.close();
 	console.log('Connected to server');
   });
   ws.addEventListener('message', (event) => {
@@ -53,8 +52,6 @@ window.onbeforeunload = function () {
 }
 
 function sendLocation() {
-
-	
 	if (ws.readyState === WebSocket.OPEN) {
 		messageHelp = document.getElementById("textbox").value;
 		navigator.geolocation.getCurrentPosition((position) => {
