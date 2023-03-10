@@ -1,5 +1,6 @@
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ port: 9999 });
+const htp_resp = new WebSocket.Server({port: 9998}); 
 
 let conection = new Object()
 let connections = [];
@@ -9,7 +10,8 @@ const mysql = require('mysql');
 class Database {
   constructor() {
     this.connection = mysql.createConnection({
-      host: '10.1.79.77',
+      //host: '10.1.79.77',
+      host: '192.168.0.110',
       user: 'vScopeUserName',
       password: 'password',
       database: 'resqme',
@@ -62,13 +64,26 @@ class Database {
     });
   }
 
-  getAllCoords(){
+  async getAllCoords(){
+
+    
+    let calbackresolve;
+    let calbackreject;
+    let cordscalback = (resolve, reject) => {
+              calbackresolve = resolve;
+              calbackreject = reject;
+    }
+    let cordspromise = new Promise(cordscalback);
     const query = `SELECT latitude, longitute FROM resqme`;
 
     this.connection.query(query, (err, result) => {
-      if (err) throw err;
-      console.log(result);
+      
+      if (err) calbackreject (err);
+
+      calbackresolve (result);
     });
+    
+    return cordspromise;
   }
 }
 //////////////////////////////driver code///////////////////////////////////
@@ -154,6 +169,23 @@ function update_message(ip, message)
   }
 }
 
+htp_resp.on('connection',async function connection(ws)
+{
+  db_answer = await db.getAllCoords();
+  let cords_obj = {};
+  let output_arr = [];
+
+  for(let i = 0; i < db_answer.length; i++)
+  {
+    cords_obj.lat = db_answer[i].latitude;
+    cords_obj.long = db_answer[i].longitute;
+    output_arr.push(cords_obj);
+  }
+
+  //trqbva da go vurna na drugiq kod
+  ws.send(JSON.stringify(output_arr));
+
+});
 
 wss.on('connection', function connection(ws) {
   console.log('Client connected');
@@ -171,12 +203,18 @@ wss.on('connection', function connection(ws) {
   
     connections.push(conection);
   }
-
   ws.on('message', function incoming(message) {
      
     console.log(`Address: ${connections[0].addres} Date: ${connections[0].time}`);
     console.log('Received: %s', message);
     ws.send('Server says: ' + message);
+
+    if(message[0] == 49)
+    { 
+      //const mesage_aray = message.split("|");
+      //db.addClient(parseFloat(mesage_aray[1]),parseFloat(mesage_aray[2]),Date.now(),mesage_aray[3]);
+      console.log(typeof(message.toString()));
+    }
 
     update_message(conection.addres, message.toString());
     update_time(conection.addres);
@@ -200,7 +238,7 @@ function check_for_time()
     {
       
       const mesage_aray = check_arrray[i].message.split("|");
-      db.addClient(parseFloat(mesage_aray[0]),parseFloat(mesage_aray[1]),Date.now(),mesage_aray[2]);
+      db.addClient(parseFloat(mesage_aray[1]),parseFloat(mesage_aray[2]),Date.now(),mesage_aray[3]);
       
       delete_from_array(check_arrray[i].addres);
       remove_from_check(check_arrray[i].addres);
