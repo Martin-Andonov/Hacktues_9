@@ -4,10 +4,19 @@ let ws;
 var isConected = false; //* if there is an error it will be set to false
 var isActive = false;
 
+let messageHelp = "";
+
 document.getElementById("button").addEventListener("click", function() {
   isActive = !isActive;
   console.log("Button clicked, isActive = " + isActive);
+
+  if(isActive) {
+    messageHelp = document.getElementById("textbox").value;
+  }
 });
+
+  
+
 
 function connect() {
   ws = new WebSocket(`ws://${LOCATION}`);
@@ -26,7 +35,7 @@ function connect() {
     console.log('Connected to server');
   });
   ws.addEventListener('message', (event) => {
-    console.log('Message from server: ', event.data);
+    console.log('message from server: ', event.data);
   }); 
   window.onbeforeunload = function () {
     isConected = false;
@@ -50,7 +59,7 @@ function sendLocation() {
   if (isActive && ws.readyState === WebSocket.OPEN) {
     navigator.geolocation.getCurrentPosition((position) => {
       console.log(position.coords.latitude, position.coords.longitude);
-      ws.send(`${position.coords.latitude}|${position.coords.longitude}`);
+      ws.send(`${position.coords.latitude}|${position.coords.longitude}|${messageHelp}`);
     });
   }
 }
