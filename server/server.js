@@ -10,7 +10,7 @@ function chek_for_existance(ip)
 {
   for(let i = 0; i < connections.length; i++ )
   {
-    if(connections[i].addres = ip)
+    if(connections[i].addres == ip)
     {
       return 1;
     }
@@ -27,11 +27,10 @@ function initiate_check(ip)
 
   for(let i = 0; i < connections.length; i++)
   {
-    if(connections[i].addres = ip)
+    if(connections[i].addres == ip)
     {
-       //TODO: ne bachka opravi go 
        check_arrray.push(connections[i]);
-       connections.splice(i, 1); //tova moje i da bachka 
+       //connections.splice(i, 1); //tova moje i da bachka 
        break;
     }
   }
@@ -39,12 +38,34 @@ function initiate_check(ip)
   //console.log(connections);
 }
 
+function delete_from_array(ip)
+{
+  for(let i = 0; i < connections.length; i++)
+  {
+    if(connections[i].addres == ip)
+    {
+       connections.splice(i, 1); //tova moje i da bachka 
+       break;
+    }
+  }
+}
+function remove_from_check(ip)
+{
+  for(let i = 0; i < check_arrray.length; i++)
+  {
+    if(check_arrray[i].addres == ip)
+    {
+       check_arrray.splice(i, 1); //tova moje i da bachka 
+       break;
+    }
+  }
+}
 function update_time(ip)
 {
   //update time when new message arrives
   for(let i = 0; i < connections.length; i++)
   {
-    if(connections[i].addres = ip)
+    if(connections[i].addres == ip)
     {
       connections[i].time = Date.now();
     }
@@ -56,8 +77,9 @@ wss.on('connection', function connection(ws) {
 
   if(chek_for_existance(ws._socket.remoteAddress))
   {
+    console.log("\nClient reconnected!");
+    remove_from_check(ws._socket.remoteAddress);
     
-
   }else
   {
     conection.addres = ws._socket.remoteAddress;
@@ -65,6 +87,7 @@ wss.on('connection', function connection(ws) {
     connection.message = "";
   
     connections.push(conection);
+  }
 
   ws.on('message', function incoming(message) {
 
@@ -81,8 +104,6 @@ wss.on('connection', function connection(ws) {
     console.log('Client disconnected');
     initiate_check(ws._socket.remoteAddress);
   });
-
-  }
 });
 
 
@@ -93,8 +114,9 @@ function check_for_time()
   for(let i = 0; i< check_arrray.length; i++)
   {
 
-    if(Date.now() - check_arrray[i].time > 10)//if you are disconected for more than 5minutes (300 sec) enters
+    if(Date.now() - check_arrray[i].time > 300)//if you are disconected for more than 5minutes (300 sec) enters
     {
+      delete_from_array(check_arrray[i].addres);
       console.log("kur valq e zatrupan");
     }   
   }

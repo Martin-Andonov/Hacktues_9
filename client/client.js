@@ -42,6 +42,10 @@ const intervalId = setInterval(() => {
   }
 }, 1000); // repeat every second
 
+window.onbeforeunload = function () {
+	ws.close();
+}
+
 function sendLocation() {
   if (isActive && ws.readyState === WebSocket.OPEN) {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -50,5 +54,4 @@ function sendLocation() {
     });
   }
 }
-
 setInterval(sendLocation, 5000);
