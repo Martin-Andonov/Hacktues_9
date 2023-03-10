@@ -1,3 +1,5 @@
+
+
 var map = L.map('map').setView([42.69, 23.32], 13);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -12,6 +14,27 @@ function addMarker(lat, lng, popupContent) {
   }
   markers.push(marker);
 }
+
+function data_brakedown(cords_data)
+{
+  
+  for(let i = 0; i < cords_data.length; i++)
+  {
+    //console.log("x:" + cords_data[i].lat + " y:" + cords_data[i].long);
+    addMarker(cords_data[i].lat ,cords_data[i].long,"");
+  }
+}
+
+let socket = new WebSocket("ws://127.0.0.1:9998");
+let cords_data ;
+
+socket.addEventListener('message', (event) => {
+  //console.log('message from server: ', event.data);
+  cords_data = JSON.parse(event.data);
+  data_brakedown(cords_data);
+}); 
+
+
 
 function addMarkersToMap() {
   markers.forEach(function(marker) {
