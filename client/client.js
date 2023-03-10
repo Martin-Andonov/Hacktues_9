@@ -1,5 +1,5 @@
-// const LOCATION = "10.1.79.77:9999";
-const LOCATION = "192.168.0.7";
+const LOCATION = "10.1.79.139:9999";
+// const LOCATION = "192.168.0.7";
 let ws;
 var isConected = false; //* if there is an error it will be set to false
 var isActive = false;
