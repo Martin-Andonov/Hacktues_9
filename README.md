@@ -25,6 +25,7 @@ To use ResQMe, follow these steps:
 
 Note: ResQMe is an anonymous web-based application, and no login is required. Simply connect to the ResQMe website or PWA app to start using our app immediately.
 
+## [Presentation (works only in PowerPoint)](https://docs.google.com/presentation/d/1lAVxxBvX8NRWgGcZcblqejD0l4HOyubS/edit?usp=sharing&ouid=118146210055797813296&rtpof=true&sd=true)
 ## Authors
 
 - [@SashoJoto](https://github.com/SashoJoto)
