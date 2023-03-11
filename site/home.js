@@ -10,3 +10,11 @@ function toggle() {
     popup.classList.toggle('active');
 }
 
+function showSentMessage(event) {
+    event.preventDefault();
+    var sentMessage = document.getElementById("sentMessage");
+    sentMessage.style.display = "block";
+    setTimeout(function() {
+        window.location.href = "map.html";
+    }, 500); 
+}

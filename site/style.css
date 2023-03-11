@@ -85,12 +85,12 @@ input[type="submit"] {
     border: none;
     outline: none;
     cursor: pointer;
-    background: #ffc107;
+    background: #ff5722;
     color: white;
 }
 
 input[type="submit"]:hover {
-    background-color: #ff5722;
+    background-color: #791c00;
 }
 
 #help-btn {
