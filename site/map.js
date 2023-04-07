@@ -45,7 +45,6 @@ function addMarkersToMap() {
 let markers = [];
 let circles = [];
 addMarker(42.71838645267613, 23.252889957671773, "lulin");
-addMarker(42.69720439595591, 23.308872700000002);
 addMarkersToMap();
 L.circle([42.42528, 25.63472], {
   radius: 30000,
