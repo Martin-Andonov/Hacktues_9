@@ -11,6 +11,7 @@ ResQMe is a mobile web application designed to help people in distress during a 
 - Node.js: server-side scripting and application logic
 - HTML and CSS: client-side user interface design
 - Vanilla JavaScript: interactivity and dynamic functionality
+- Flutter: for a dynamic phone application
 - Bootstrap: responsive and mobile-friendly UI components
 - MySQL: database to store user information and location data
 
@@ -18,7 +19,7 @@ ResQMe is a mobile web application designed to help people in distress during a 
 
 To use ResQMe, follow these steps:
 
-1. Connect to our mobile website or install our PWA app on your device.
+1. Connect to our mobile website or install our resqme.apk app on your device.
 2. You will see a red button on the screen. Click it if you need help.
 3. If you click the button or lose internet connectivity, your status will be updated to "need help," and our team will be notified of your location.
 4. You can switch to the "Map" tab to view a map of everyone in need of help.
