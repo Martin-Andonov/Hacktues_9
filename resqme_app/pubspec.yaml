@@ -41,6 +41,7 @@ dependencies:
   latlong2 : any
   location: ^4.2.0
   web_socket_channel: ^2.4.0
+  permission_handler: ^10.2.0
 
 dev_dependencies:
   flutter_test:
