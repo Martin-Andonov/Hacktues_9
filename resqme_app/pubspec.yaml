@@ -39,7 +39,8 @@ dependencies:
 
   flutter_map: ^3.0.0
   latlong2 : any
-  # location: ^3.2.4
+  location: ^4.2.0
+  web_socket_channel: ^2.4.0
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 
 import "interactive_map.dart";
 
@@ -78,5 +79,4 @@ class _ButtonPageState extends State<ButtonPage> {
   }
 }
 
-// Location location = new Location();
 // https://pub.dev/documentation/location/latest/
